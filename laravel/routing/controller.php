@@ -284,8 +284,10 @@ abstract class Controller {
 
 			$response = $this->response($method, $parameters);
 		}
+       $response=Event::fire('view.auto', array($response));
 
-		$response = Response::prepare($response);
+
+        $response = Response::prepare($response[0]);
 
 		// The "after" function on the controller is simply a convenient hook
 		// so the developer can work on the response before it's returned to

@@ -10,7 +10,7 @@ use Router;
 | By including this file, the core of the framework will be setup which
 | includes the class auto-loader, and the registration of any bundles.
 | Basically, once this file has been included, the entire framework
-| may be used by the developer.
+| may be used by the developer. 
 |
 */
 
@@ -176,6 +176,9 @@ $response = Request::$route->call();
 | content and sets the raw string result as the new response.
 |
 */
+
+
+
 
 $response->render();
 

@@ -29,10 +29,14 @@ class Home_Controller extends Base_Controller {
 	|		}
 	|
 	*/
-
+    public $data;
+    
 	public function action_index()
-	{
-		return View::make('home.index');
+	{        
+        $this->data['hi'] = "Sayhi";
+        // var_dump(Controller::resolve($action->bundle, $action->controller));
+
+		//return View::make('home.index');
 	}
 
 }

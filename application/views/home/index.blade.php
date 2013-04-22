@@ -19,7 +19,7 @@
 		<div role="main" class="main">
 			<div class="home">
 				<h2>Learn the terrain.</h2>
-
+                
 				<p>
 					You've landed yourself on our default home page. The route that
 					is generating this page lives at:

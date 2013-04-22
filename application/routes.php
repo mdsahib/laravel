@@ -38,6 +38,10 @@ Route::get('docs', function()
 });
 
 
+Route::get('home','Home@index');
+
+
+
 
 
     /*
@@ -50,6 +54,7 @@ Route::get('/', function() {
 
 	// lets get our posts and eager load the
 	// author
+    
 	$posts = Post::with('author')->all();
 
 	// show the home view, and include our
@@ -58,6 +63,7 @@ Route::get('/', function() {
 		->with('posts', $posts);
 
 });
+
 
 /*
 |--------------------------------------------------------------------------
@@ -170,7 +176,6 @@ Route::post('login', function() {
 	// call Auth::attempt() on the username and password
 	// to try to login, the session will be created
 	// automatically on success
-    var_dump($username,$password);
 	if ( Auth::attempt(array ('username'=>$username, 'password'=>'password' ) ) )
 	{
 		// it worked, redirect to the admin route
@@ -234,6 +239,17 @@ Event::listen('500', function($exception)
 	return Response::error('500');
 });
 
+Event::listen('view.auto', function($content)
+{
+    $action=Request::route();
+    $controller=Controller::resolve($action->bundle, $action->controller);
+    $content=$content[0];
+    if (!$content) {
+         return View::make($action->controller.'.'.$action->controller_action,$controller->data);
+    }
+    else return $content;
+});
+
 /*
 |--------------------------------------------------------------------------
 | Route Filters
@@ -281,3 +297,5 @@ Route::filter('auth', function()
 {
 	if (Auth::guest()) return Redirect::to('login');
 });
+
+

@@ -146,8 +146,10 @@ class Route {
 		// If the action is a string, it is pointing the route to a controller
 		// action, and we can just call the action and return its response.
 		// We'll just pass the action off to the Controller class.
+        
 		$delegate = $this->delegate();
-
+        
+        
 		if ( ! is_null($delegate))
 		{
 			return Controller::call($delegate, $this->parameters);
@@ -238,6 +240,7 @@ class Route {
 	 */
 	protected function delegate()
 	{
+        
 		return array_get($this->action, 'uses');
 	}
 
